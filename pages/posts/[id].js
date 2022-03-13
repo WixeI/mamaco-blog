@@ -1,5 +1,5 @@
 import Layout from "../../components/layout";
-import { getAllPostIds, getSortedPostsData } from "../../utils/get-posts";
+import { getAllPostIds, getPostData } from "../../utils/get-posts";
 
 //Flow order: getStaticPaths -> getStaticProps -> Template ("Posts")
 
@@ -19,20 +19,28 @@ export async function getStaticPaths() {
 /**
  * - Receives information from "getStaticPaths" and gather other information based on it
  * - The "params" key must have this name to get information of "getStaticPaths".
- * - The "id" key inside "params" is used to set the name of the page, like a variable
+ * - The "id" key inside "params" is used to set the name of the page/file, like a variable
  */
 export async function getStaticProps({ params }) {
-    const data = getSortedPostsData()
+    const postData = await getPostData(params.id)
 
     return {
         props: {
-            data
+            postData
         }
     }
 }
 
-export default function Post({ data }) {
+export default function Post({ postData }) {
     return (
-        <Layout>...</Layout>
+        <Layout>
+            {postData.title}
+            <br />
+            {postData.id}
+            <br />
+            {postData.date}
+            <br />
+            <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        </Layout>
     )
 }
