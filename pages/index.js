@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import Date from '../components/date'
 import Layout, { siteTitle } from '../components/layout'
 import { getSortedPostsData } from '../utils/get-posts'
 
@@ -46,9 +47,11 @@ export default function Home({ postsMetadata }) {
             <ul>
               {postsMetadata.map(({ id, title, date }) => (
                 <li key={id}>
-                  {title}
+                  <Link href={`/posts/${id}`}>
+                    <a>{title}</a>
+                  </Link>
                   <br />
-                  {date}
+                  <Date dateString={date} />
                   <br />
                   {id}
                 </li>
