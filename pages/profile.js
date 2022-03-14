@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Script from "next/script";
-import Layout from "../../components/layout";
+import Layout from "../components/layout";
 
 //DEPRECATED. This page exists only for Educational Purposes by using hardcoded information.
 
@@ -13,7 +13,7 @@ import Layout from "../../components/layout";
  * - 
  */
 
-export default function FirstPost({ data }) {
+export default function Profile({ data }) {
     return (
         <Layout>
             <Head>
@@ -26,8 +26,8 @@ export default function FirstPost({ data }) {
                     console.log(`script loaded. Window.FB has been populated to be used`)
                 }
             />
-            <h1>First Post Boii</h1>
-            <h1>Data: {data}</h1>
+            <h1><b>Name:</b> Mamaco Junior</h1>
+            <h1><b>Favorite Food: </b>{data}</h1>
             <h2>
                 <Link href="/">
                     <a>Back to Home</a>

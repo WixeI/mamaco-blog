@@ -29,7 +29,7 @@ export default function Home({ postsMetadata }) {
         <section className="headingMd">
           <p>Boa nerdola, tô gostando de ver</p>
 
-          <Link href="/posts/first-post">
+          <Link href="/profile">
             <a>Nerdola Profile</a>
           </Link>
 
